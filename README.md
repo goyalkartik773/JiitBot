@@ -1,0 +1,279 @@
+# 🎓 JIIT Assistant
+
+A comprehensive AI-powered web application for JIIT (Jaypee Institute of Information Technology) students and faculty, providing intelligent assistance for academic projects and institutional information.
+
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+
+## 📋 Table of Contents
+
+- [Features](#features)
+- [Architecture](#architecture)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Technologies Used](#technologies-used)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [Authors](#authors)
+- [License](#license)
+
+## ✨ Features
+
+### 1. 🤖 AI-Powered Chatbot
+- **Hybrid Search System**: Combines FAISS (semantic search) and BM25 (keyword search) for optimal information retrieval
+- **LLM Integration**: Uses Groq/OpenAI for generating natural, context-aware responses
+- **Web Scraping**: Automatically crawls and indexes JIIT website content
+- **Source Citation**: All responses include citations from official JIIT sources
+- **PDF Support**: Processes and indexes PDF documents from the JIIT website
+- **Intelligent Caching**: Minimizes redundant web requests with smart caching
+
+### 2. 📊 Project Synopsis Generator
+- **AI-Powered Content**: Uses Google Gemini to generate professional project content
+- **Dual Format Output**: Generates both PDF and DOCX formats
+- **JIIT Branding**: Professional cover page with JIIT logo and formatting
+- **Automatic Sections**: 
+  - Objective
+  - Introduction
+  - Key Features
+  - Technologies Used
+  - References
+- **Image Support**: Add custom diagrams and screenshots
+- **Smart Pagination**: Automatic text wrapping and page breaks
+
+### 3. 🏫 JIIT Information Hub
+- **Social Media Aggregator**: Embedded content from all official JIIT platforms
+- **YouTube Integration**: Featured campus tours and student experiences
+- **Multi-Platform Support**:
+  - Instagram (@jiit.official)
+  - Facebook (/jiitofficial)
+  - Twitter (@JaypeeUniversi2)
+  - LinkedIn (Jaypee Institute of Information Technology)
+  - Reddit discussions
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                     JIIT Assistant                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │
+│  │   Chatbot    │  │ PPT Generator│  │  Info Hub    │    │
+│  │              │  │              │  │              │    │
+│  │ • Web Scraper│  │ • Gemini AI  │  │ • YouTube    │    │
+│  │ • FAISS      │  │ • PDF Gen    │  │ • Instagram  │    │
+│  │ • BM25       │  │ • DOCX Gen   │  │ • Facebook   │    │
+│  │ • Groq/OpenAI│  │              │  │ • Twitter    │    │
+│  └──────────────┘  └──────────────┘  └──────────────┘    │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Chatbot Architecture
+
+1. **Web Scraping Layer**
+   - Crawls JIIT website using sitemap
+   - Processes HTML and PDF documents
+   - Implements intelligent caching (24-hour validity)
+
+2. **Indexing Layer**
+   - FAISS: Semantic search using sentence transformers
+   - BM25: Keyword-based search
+   - Hybrid fusion using reciprocal rank fusion
+
+3. **Response Generation Layer**
+   - LLM integration (Groq/OpenAI)
+   - Fallback mode for offline operation
+   - Source citation and formatting
+
+## 🚀 Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- pip package manager
+- Git (for cloning)
+
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/YOUR_USERNAME/JiitBot.git
+cd JiitBot
+```
+
+### Step 2: Create Virtual Environment (Recommended)
+```bash
+# Windows
+python -m venv venv
+venv\Scripts\activate
+
+# Linux/Mac
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Step 3: Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: Set Up Environment Variables
+Create a `.env` file in the project root:
+```env
+GROQ_API_KEY=your_groq_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+**Note**: You need at least one API key. Get them from:
+- Groq: https://console.groq.com/
+- OpenAI: https://platform.openai.com/
+
+### Step 5: Add JIIT Logo
+Place `jiit_logo.png` in the project root directory for the PPT generator to work properly.
+
+## 💻 Usage
+
+### Running the Application
+```bash
+streamlit run app.py
+```
+
+The application will open in your default browser at `http://localhost:8501`
+
+### Using the Chatbot
+1. Navigate to the Chatbot section
+2. Ask questions about JIIT (admissions, placements, facilities, etc.)
+3. The chatbot will search the knowledge base and provide cited responses
+
+### Generating Project Synopsis
+1. Navigate to the PPT Generator section
+2. Fill in project details:
+   - Project title
+   - Category/Lab
+   - Team members (names and enrollment numbers)
+   - Guide names
+3. Optionally upload images
+4. Click "Generate Project PDF"
+5. Download both PDF and DOCX formats
+
+### Exploring JIIT Information
+1. Navigate to the JIIT Info section
+2. Browse embedded social media content
+3. Watch campus tour videos
+4. View latest updates from all platforms
+
+## 📁 Project Structure
+
+```
+JiitBot/
+├── app.py                  # Main application entry point
+├── chatbot.py             # AI chatbot implementation
+├── ppt_generator.py       # Synopsis generator
+├── jiit_info.py           # Social media hub
+├── requirements.txt       # Python dependencies
+├── .gitignore            # Git ignore rules
+├── .env                  # Environment variables (not in repo)
+├── jiit_logo.png         # JIIT logo (add manually)
+├── README.md             # This file
+│
+├── jiit_data/            # Generated data (gitignored)
+│   ├── cache/           # Cached web pages
+│   ├── faiss_index/     # FAISS vector index
+│   ├── bm25_index/      # BM25 keyword index
+│   └── documents/       # Processed documents
+│
+└── .streamlit/          # Streamlit config (gitignored)
+    └── secrets.toml     # API keys
+```
+
+## 🛠️ Technologies Used
+
+### Frontend & Framework
+- **Streamlit**: Web application framework
+- **HTML/CSS**: Custom styling and animations
+
+### AI & Machine Learning
+- **Sentence Transformers**: Text embeddings for semantic search
+- **FAISS**: Vector similarity search
+- **BM25**: Keyword-based search algorithm
+- **Groq API**: Fast LLM inference (Llama 3.3 70B)
+- **OpenAI API**: GPT-4o-mini for responses
+- **Google Gemini**: Content generation for synopses
+
+### Document Processing
+- **BeautifulSoup4**: HTML parsing
+- **PyPDF2**: PDF text extraction
+- **ReportLab**: PDF generation
+- **python-docx**: DOCX generation
+
+### Data & Storage
+- **NumPy**: Numerical operations
+- **Pickle**: Index serialization
+- **JSON**: Data storage
+
+### Web Scraping
+- **Requests**: HTTP requests
+- **XML ElementTree**: Sitemap parsing
+
+## ⚙️ Configuration
+
+### Chatbot Configuration (`chatbot.py`)
+```python
+MAX_PAGES = 1000              # Maximum pages to scrape
+CACHE_VALIDITY_HOURS = 24     # Cache expiration
+FAISS_TOP_K = 15             # Top semantic results
+BM25_TOP_K = 15              # Top keyword results
+FINAL_TOP_K = 8              # Final results after fusion
+LLM_TEMPERATURE = 0.2        # Response randomness
+LLM_MAX_TOKENS = 1200        # Max response length
+```
+
+### Customization
+- Modify CSS in `app.py` for styling changes
+- Update `Config` class in `chatbot.py` for scraping parameters
+- Adjust prompts in `ppt_generator.py` for content generation
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 👥 Authors
+
+**Team Members:**
+- **Kartik**
+- **Manav**
+- **Sujal**
+
+**Supervisor:**
+- **Dr. Tribhuvan Kumar Tewary**
+
+**Institution:**
+- Jaypee Institute of Information Technology (JIIT), Noida
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- JIIT for providing the institutional data
+- Groq for fast LLM inference
+- Google for Gemini API
+- Streamlit for the amazing framework
+- All open-source contributors
+
+## 📞 Contact
+
+For questions or support, please open an issue on GitHub.
+
+---
+
+**Made with ❤️ by Kartik, Manav, and Sujal**
+
+**Under the supervision of Dr. Tribhuvan Kumar Tewary**
