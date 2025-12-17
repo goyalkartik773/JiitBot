@@ -2,9 +2,24 @@
 
 A comprehensive AI-powered web application for JIIT (Jaypee Institute of Information Technology) students and faculty, providing intelligent assistance for academic projects and institutional information.
 
+## 🚀 Live Demo
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://jiitbot-assistant.streamlit.app/)
+
+**🌐 Try it now:** [https://jiitbot-assistant.streamlit.app/](https://jiitbot-assistant.streamlit.app/)
+
+> **Note for Visitors:** The app is live and fully functional! Explore all 4 features:
+> - 🤖 AI Chatbot for JIIT queries
+> - 📊 Project Synopsis Generator
+> - 🏫 JIIT Information Hub
+> - 📡 Live Portal with AI insights
+
+---
+
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Status](https://img.shields.io/badge/Status-Live-success.svg)
 
 ## 📋 Table of Contents
 
@@ -16,6 +31,7 @@ A comprehensive AI-powered web application for JIIT (Jaypee Institute of Informa
 - [Project Structure](#project-structure)
 - [Technologies Used](#technologies-used)
 - [Configuration](#configuration)
+- [Deployment](#deployment)
 - [Contributing](#contributing)
 - [Authors](#authors)
 - [License](#license)
@@ -476,6 +492,40 @@ Contributions are welcome! Please follow these steps:
 
 **Institution:**
 - Jaypee Institute of Information Technology (JIIT), Noida
+
+## 🌐 Deployment
+
+### Live Application
+
+The JIIT Assistant is deployed and accessible at:
+
+**🔗 [https://jiitbot-assistant.streamlit.app/](https://jiitbot-assistant.streamlit.app/)**
+
+### Deployment Platform
+
+- **Platform:** Streamlit Cloud
+- **Status:** ✅ Live and Running
+- **Uptime:** 24/7 (with auto-sleep after inactivity)
+- **Updates:** Auto-deployed from GitHub main branch
+
+### For Visitors
+
+1. **Access the App:** Click the link above or the badge at the top
+2. **No Installation Required:** Works directly in your browser
+3. **All Features Available:** Try all 4 AI-powered features
+4. **Free to Use:** No registration or payment needed
+
+### For Developers
+
+Want to deploy your own instance?
+
+1. Fork this repository
+2. Sign up for [Streamlit Cloud](https://streamlit.io/cloud)
+3. Connect your GitHub repository
+4. Add your API keys in Streamlit secrets
+5. Deploy!
+
+See `DEPLOYMENT_GUIDE.md` for detailed instructions.
 
 ## 📄 License
 
