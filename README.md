@@ -9,6 +9,7 @@ A comprehensive AI-powered web application for JIIT (Jaypee Institute of Informa
 ## 📋 Table of Contents
 
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Architecture](#architecture)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -18,6 +19,7 @@ A comprehensive AI-powered web application for JIIT (Jaypee Institute of Informa
 - [Contributing](#contributing)
 - [Authors](#authors)
 - [License](#license)
+
 
 ## ✨ Features
 
@@ -51,6 +53,108 @@ A comprehensive AI-powered web application for JIIT (Jaypee Institute of Informa
   - Twitter (@JaypeeUniversi2)
   - LinkedIn (Jaypee Institute of Information Technology)
   - Reddit discussions
+
+### 4. 📡 JIIT Live Portal (NEW!)
+- **Real-Time Updates**: Live scraping of JIIT website for latest information
+- **Future Events Only**: Smart filtering to show only upcoming events
+- **AI-Powered Insights**:
+  - Sentiment analysis of announcements and news
+  - Event popularity predictions using ML
+  - Personalized event recommendations
+  - Attendance trend forecasting with interactive charts
+- **Auto-Refresh**: Configurable automatic data refresh (2-15 minutes)
+- **Interactive Dashboard**: Live metrics and statistics
+- **Smart Filtering**: Automatically filters out past events
+- **ML Technologies**: scikit-learn, TextBlob, Plotly visualizations
+
+## 📸 Screenshots
+
+### � Homepage
+The main landing page with glassmorphism cards and animated gradients.
+
+![Homepage](screenshots/homepage1.png)
+
+![Homepage](screenshots/homepage2.png)
+
+---
+
+### 🤖 AI Chatbot
+
+#### Chatbot Interface
+Interactive AI assistant with sidebar always visible for easy access.
+
+![Chatbot Interface](screenshots/chatbot1.png)
+
+#### Sample Query - Admissions
+Example of chatbot answering questions about JIIT admissions with source citations.
+
+![Chatbot Admissions Query](screenshots/result1.png)
+
+#### Query Result - Admissions
+![Chatbot Admissions Query](screenshots/result2.png)
+
+
+### 📊 PPT/Synopsis Generator
+
+#### Input Form
+User-friendly form for entering project details, team members, and guides.
+
+![PPT Generator Form](screenshots/f2pg1.png)
+
+#### Generated PDF Example
+View the complete generated PDF for a sample project:
+
+📄 **[Student Management System Synopsis.pdf](screenshots/STUDENT_MANAGEMENT_SYSTEM_Synopsis%20(6).pdf)** - Click to view the full generated synopsis
+
+*This is a complete example showing the JIIT-branded cover page, project details, and all auto-generated sections.*
+
+---
+
+### 🏫 JIIT Information Hub
+
+#### YouTube Videos Section
+Embedded campus tour and student experience videos.
+
+![YouTube Section](screenshots/f3pg1.png)
+![YouTube Section](screenshots/f3pg2.png)
+
+#### Social Media Feeds
+Integrated Instagram, Facebook, and Twitter feeds.
+
+![Social Media Feeds](screenshots/f3pg3.png)
+![Social Media Feeds](screenshots/f3pg4.png)
+
+#### Complete Platform Overview
+All JIIT social media platforms in one place.
+![Platform Overview](screenshots/f3pg5.png)
+
+---
+
+### 📡 JIIT Live Portal (NEW!)
+
+#### Live Dashboard
+Real-time campus updates with upcoming events and announcements.
+
+![Live Dashboard](screenshots/f4pg1.png)
+![Live Dashboard](screenshots/f4pg2.png)
+
+#### Events Calendar
+Comprehensive calendar showing all future events with details.
+
+![Events Calendar](screenshots/f4pg3.png)
+
+#### AI-Powered Insights
+Sentiment analysis, event popularity predictions, and personalized recommendations.
+
+![AI Insights](screenshots/f4pg4.png)
+
+#### Interactive Features
+Auto-refresh controls, AI toggles, and attendance trend forecasting.
+
+![Interactive Features](screenshots/f4pg5.png)
+
+---
+
 
 ## 🏗️ Architecture
 
@@ -162,6 +266,14 @@ The application will open in your default browser at `http://localhost:8501`
 3. Watch campus tour videos
 4. View latest updates from all platforms
 
+### Using JIIT Live Portal
+1. Click on "🔴 Open Live Portal" from homepage
+2. View real-time campus updates and upcoming events
+3. Enable AI Insights from sidebar for predictions
+4. Enter your interests for personalized recommendations
+5. Configure auto-refresh rate (2-15 minutes)
+6. Set reminders for upcoming events
+
 ## 📁 Project Structure
 
 ```
@@ -170,11 +282,17 @@ JiitBot/
 ├── chatbot.py             # AI chatbot implementation
 ├── ppt_generator.py       # Synopsis generator
 ├── jiit_info.py           # Social media hub
+├── jiit_live.py           # Live portal with AI insights (NEW!)
 ├── requirements.txt       # Python dependencies
 ├── .gitignore            # Git ignore rules
 ├── .env                  # Environment variables (not in repo)
 ├── jiit_logo.png         # JIIT logo (add manually)
 ├── README.md             # This file
+├── LICENSE               # MIT License
+├── SCREENSHOT_GUIDE.md   # Guide for taking screenshots
+│
+├── screenshots/          # Project screenshots
+│   └── CHECKLIST.md     # Screenshot checklist
 │
 ├── jiit_data/            # Generated data (gitignored)
 │   ├── cache/           # Cached web pages

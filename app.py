@@ -13,6 +13,7 @@ import streamlit as st
 import ppt_generator
 import chatbot
 import jiit_info
+import jiit_live
 import time
 
 # Configure Streamlit page settings
@@ -728,7 +729,7 @@ def show_homepage():
     # Feature Cards
     st.markdown('<div class="feature-cards-container animated-content">', unsafe_allow_html=True)
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     
     with col1:
         st.markdown("""
@@ -779,6 +780,23 @@ def show_homepage():
         """, unsafe_allow_html=True)
         if st.button("🔍 Explore JIIT Info", key="info_btn", use_container_width=True):
             st.session_state.page = 'jiit_info'
+            st.rerun()
+    
+    with col4:
+        st.markdown("""
+        <div class='feature-card'>
+            <div class='card-content'>
+                <div class='icon'>📡</div>
+                <div class='card-title'>JIIT Live Portal</div>
+                <div class='card-description'>
+                    Real-time campus updates with AI insights. Live events, announcements, 
+                    sentiment analysis, and personalized recommendations powered by machine learning.
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("🔴 Open Live Portal", key="live_btn", use_container_width=True):
+            st.session_state.page = 'jiit_live'
             st.rerun()
     
     st.markdown('</div>', unsafe_allow_html=True)
@@ -865,7 +883,7 @@ def show_feature_page():
     # Navigation Bar
     st.markdown('<div class="nav-bar animated-content">', unsafe_allow_html=True)
     
-    nav_col1, nav_col2, nav_col3, nav_col4, nav_col5 = st.columns([1, 1, 1, 1, 1])
+    nav_col1, nav_col2, nav_col3, nav_col4, nav_col5, nav_col6 = st.columns([1, 1, 1, 1, 1, 1])
     
     with nav_col1:
         if st.button("🏠 Home", use_container_width=True, key="nav_home"):
@@ -888,6 +906,11 @@ def show_feature_page():
             st.rerun()
     
     with nav_col5:
+        if st.button("📡 Live", use_container_width=True, key="nav_live"):
+            st.session_state.page = 'jiit_live'
+            st.rerun()
+    
+    with nav_col6:
         if st.button("🔄 Refresh", use_container_width=True, key="nav_refresh"):
             st.rerun()
     
@@ -901,6 +924,8 @@ def show_feature_page():
         chatbot.show()
     elif st.session_state.page == 'jiit_info':
         jiit_info.show()
+    elif st.session_state.page == 'jiit_live':
+        jiit_live.main()
     
 # Enhanced JavaScript for smooth animations
 st.markdown("""

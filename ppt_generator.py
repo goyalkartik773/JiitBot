@@ -33,6 +33,7 @@ import streamlit as st
 import io
 import json
 import re
+import os
 
 # Google Generative AI for content generation
 import google.generativeai as genai
@@ -230,11 +231,36 @@ def call_gemini_ai(title):
         - Implements error handling for API failures
         - Validates response structure before returning
     """
-    # Configure the Gemini API with the API key
+    # Configure the Gemini API with the API key from environment variables
+    # SECURITY: Never hardcode API keys in your code!
     try:
-        genai.configure(api_key="AIzaSyCvVQwOl0-8IifHU5UXgRvlxLcnJQ_Pcvg")
+        # Try to get API key from Streamlit secrets first
+        if hasattr(st, 'secrets') and 'GEMINI_API_KEY' in st.secrets:
+            api_key = st.secrets['GEMINI_API_KEY']
+        # Fallback to environment variable
+        elif os.getenv('GEMINI_API_KEY'):
+            api_key = os.getenv('GEMINI_API_KEY')
+        else:
+            st.error("""
+            ⚠️ **Gemini API Key Not Found!**
+            
+            Please add your API key in one of these ways:
+            
+            **Option 1: Streamlit Secrets (Recommended)**
+            1. Create `.streamlit/secrets.toml` file
+            2. Add: `GEMINI_API_KEY = "your-api-key-here"`
+            
+            **Option 2: Environment Variable**
+            1. Create `.env` file
+            2. Add: `GEMINI_API_KEY=your-api-key-here`
+            
+            Get your API key from: https://makersuite.google.com/app/apikey
+            """)
+            return None
+        
+        genai.configure(api_key=api_key)
     except Exception as e:
-        st.error(f"API Key error: {e}. Make sure you have a .streamlit/secrets.toml file with your GEMINI_API_KEY.")
+        st.error(f"API Key configuration error: {e}")
         return None
 
     # Use the Gemini Flash model for fast content generation
