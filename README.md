@@ -159,38 +159,141 @@ Auto-refresh controls, AI toggles, and attendance trend forecasting.
 ## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                     JIIT Assistant                          │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐    │
-│  │   Chatbot    │  │ PPT Generator│  │  Info Hub    │    │
-│  │              │  │              │  │              │    │
-│  │ • Web Scraper│  │ • Gemini AI  │  │ • YouTube    │    │
-│  │ • FAISS      │  │ • PDF Gen    │  │ • Instagram  │    │
-│  │ • BM25       │  │ • DOCX Gen   │  │ • Facebook   │    │
-│  │ • Groq/OpenAI│  │              │  │ • Twitter    │    │
-│  └──────────────┘  └──────────────┘  └──────────────┘    │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────────────────┐
+│                          JIIT Assistant Platform                              │
+│                     4 AI-Powered Features in One System                       │
+├───────────────────────────────────────────────────────────────────────────────┤
+│                                                                               │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │
+│  │   Chatbot    │  │ PPT Generator│  │  Info Hub    │  │  Live Portal │   │
+│  │   🤖 AI      │  │   📊 AI      │  │   🏫 Social  │  │   📡 AI/ML   │   │
+│  ├──────────────┤  ├──────────────┤  ├──────────────┤  ├──────────────┤   │
+│  │• Web Scraper │  │• Gemini AI   │  │• YouTube     │  │• Web Scraper │   │
+│  │• FAISS Index │  │• PDF Gen     │  │• Instagram   │  │• Event Filter│   │
+│  │• BM25 Search │  │• DOCX Gen    │  │• Facebook    │  │• Sentiment   │   │
+│  │• Groq/OpenAI │  │• JIIT Brand  │  │• Twitter     │  │• Predictions │   │
+│  │• Hybrid Rank │  │• Auto Format │  │• LinkedIn    │  │• TF-IDF Rec  │   │
+│  │• Citations   │  │• Image Upload│  │• Reddit      │  │• Plotly Viz  │   │
+│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘   │
+│                                                                               │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                        Shared Components                             │    │
+│  ├─────────────────────────────────────────────────────────────────────┤    │
+│  │  • Streamlit UI Framework  • Custom CSS & Animations                │    │
+│  │  • Session State Management • Responsive Design                     │    │
+│  │  • API Key Management      • Error Handling                         │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+│                                                                               │
+└───────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Chatbot Architecture
+### Feature Architectures
+
+#### 1. 🤖 AI Chatbot Architecture
+
+**Three-Layer Design:**
 
 1. **Web Scraping Layer**
-   - Crawls JIIT website using sitemap
+   - Crawls JIIT website using sitemap.xml
    - Processes HTML and PDF documents
-   - Implements intelligent caching (24-hour validity)
+   - Intelligent caching (24-hour validity)
+   - Content classification and metadata extraction
 
 2. **Indexing Layer**
-   - FAISS: Semantic search using sentence transformers
-   - BM25: Keyword-based search
-   - Hybrid fusion using reciprocal rank fusion
+   - **FAISS**: Semantic search using sentence transformers (384-dim embeddings)
+   - **BM25**: Keyword-based search for exact matches
+   - **Hybrid Fusion**: Reciprocal rank fusion for optimal results
+   - Stores 1000+ documents with efficient retrieval
 
 3. **Response Generation Layer**
-   - LLM integration (Groq/OpenAI)
-   - Fallback mode for offline operation
-   - Source citation and formatting
+   - **Primary**: Groq API (llama-3.3-70b-versatile)
+   - **Fallback**: OpenAI API (gpt-4o-mini)
+   - Context-aware responses with source citations
+   - Offline fallback mode
+
+---
+
+#### 2. 📊 PPT/Synopsis Generator Architecture
+
+**AI-Powered Content Pipeline:**
+
+1. **Input Processing**
+   - Project title and details collection
+   - Team member and guide information
+   - Optional image uploads
+
+2. **AI Content Generation**
+   - **Google Gemini AI** (gemini-flash-latest)
+   - Generates: Objective, Introduction, Key Features, Technologies, References
+   - JIIT-specific academic formatting
+
+3. **Document Generation**
+   - **PDF**: ReportLab with custom JIIT branding
+   - **DOCX**: python-docx with professional formatting
+   - Auto-pagination and text wrapping
+   - Image integration and layout optimization
+
+---
+
+#### 3. 🏫 JIIT Information Hub Architecture
+
+**Social Media Aggregation:**
+
+1. **Content Sources**
+   - YouTube API integration
+   - Instagram embed widgets
+   - Facebook page plugins
+   - Twitter timeline widgets
+   - LinkedIn company page
+   - Reddit community feeds
+
+2. **Display Layer**
+   - Responsive iframe embeds
+   - Platform-specific styling
+   - Quick navigation links
+   - Real-time content updates
+
+---
+
+#### 4. 📡 JIIT Live Portal Architecture (NEW!)
+
+**Real-Time AI/ML System:**
+
+1. **Data Collection Layer**
+   - **Web Scraper**: Real-time JIIT website scraping
+   - **Smart Filtering**: Future events only (date parsing)
+   - **Auto-Refresh**: Configurable 2-15 minute intervals
+   - **Caching**: Intelligent data caching
+
+2. **AI/ML Processing Layer**
+   - **Sentiment Analysis**: TextBlob NLP for announcements
+   - **Event Popularity**: ML-based prediction scoring
+   - **Recommendations**: TF-IDF + Cosine Similarity
+   - **Trend Forecasting**: Attendance predictions
+
+3. **Visualization Layer**
+   - **Plotly Charts**: Interactive trend visualizations
+   - **Live Dashboard**: Real-time metrics and statistics
+   - **Event Calendar**: Expandable event details
+   - **AI Insights Tab**: Sentiment and predictions display
+
+4. **User Interaction**
+   - Personalized event recommendations
+   - Event reminder system
+   - AI feature toggles
+   - Custom refresh controls
+
+---
+
+### Technology Stack by Feature
+
+| Feature | Primary Technologies |
+|---------|---------------------|
+| **Chatbot** | FAISS, BM25, Groq/OpenAI, BeautifulSoup, Sentence Transformers |
+| **PPT Generator** | Google Gemini AI, ReportLab, python-docx, PIL |
+| **Info Hub** | YouTube API, Social Media Embeds, Streamlit Components |
+| **Live Portal** | scikit-learn, TextBlob, Plotly, pandas, BeautifulSoup |
+| **Shared** | Streamlit, Python 3.8+, Custom CSS, Session Management |
 
 ## 🚀 Installation
 

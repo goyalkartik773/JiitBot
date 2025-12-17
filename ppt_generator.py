@@ -50,9 +50,6 @@ from reportlab.lib.enums import TA_LEFT
 # PIL for image processing
 from PIL import Image
 
-# Package utilities
-import pkg_resources
-
 # python-docx for DOCX generation
 import docx
 from docx.shared import Inches, Pt
