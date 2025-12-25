@@ -1,4 +1,6 @@
+<div align="center">
 # 🎓 JIIT Assistant
+</div>
 
 <div align="center">
   <img src="screenshots/banner.png" alt="JIIT Assistant Banner" width="100%">
@@ -6,7 +8,9 @@
 
 A comprehensive AI-powered web application for JIIT (Jaypee Institute of Information Technology) students and faculty, providing intelligent assistance for academic projects and institutional information.
 
+<div align="center">
 ## 🚀 Live Demo
+</div>
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://jiitbot-assistant.streamlit.app/)
 
