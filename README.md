@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="screenshots/banner.png" alt="JIIT Assistant Banner" width="100%">
+</div>
+
 # 🎓 JIIT Assistant
 
 A comprehensive AI-powered web application for JIIT (Jaypee Institute of Information Technology) students and faculty, providing intelligent assistance for academic projects and institutional information.
